@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marta Fernández-Golfín — Coach Transpersonal</title>
+<meta name="description" content="Coach transpersonal (ICF) en Madrid. Acompaño procesos de desarrollo personal y ejecutivo. Sesiones online y presenciales, en español e inglés.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F4EFE6;
+    --bg-alt: #EBE4D6;
+    --bg-card: #FBF7EF;
+    --ink: #2B2520;
+    --ink-soft: #5A4F46;
+    --ink-muted: #8A7E72;
+    --accent: #7C3E1E;
+    --accent-soft: #C9986E;
+    --rule: rgba(43, 37, 32, 0.12);
+    --serif: 'Cormorant Garamond', 'Times New Roman', serif;
+    --sans: 'Inter', -apple-system, sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ===== GRAIN TEXTURE OVERLAY ===== */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.035;
+    z-index: 1000;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ===== NAV ===== */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    padding: 1.25rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    background: rgba(244, 239, 230, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .brand {
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .brand em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 400;
+  }
+  .nav-right {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+  .lang-switch {
+    display: flex;
+    gap: 0.5rem;
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+  .lang-switch span.active {
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .lang-switch span:not(.active) {
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  .lang-switch span:not(.active):hover { color: var(--ink); }
+  .nav-cta {
+    font-family: var(--sans);
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    padding: 0.6rem 1.2rem;
+    border: 1px solid var(--ink);
+    border-radius: 2px;
+    transition: all 0.25s;
+  }
+  .nav-cta:hover {
+    background: var(--ink);
+    color: var(--bg);
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100vh;
+    padding: 9rem 2.5rem 5rem;
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 5rem;
+    align-items: center;
+    max-width: 1440px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .hero-text .eyebrow {
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+  }
+  .hero-text .eyebrow::before {
+    content: '';
+    width: 2rem;
+    height: 1px;
+    background: var(--accent);
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.75rem, 5.2vw, 4.5rem);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 2rem;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 400;
+  }
+  .hero p {
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+    max-width: 540px;
+  }
+  .hero .logistics {
+    font-size: 0.9rem;
+    color: var(--ink-muted);
+    margin-top: 2rem;
+    margin-bottom: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .hero .logistics::before {
+    content: '';
+    width: 1.5rem;
+    height: 1px;
+    background: var(--ink-muted);
+  }
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-family: var(--sans);
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--bg);
+    background: var(--ink);
+    text-decoration: none;
+    padding: 1.1rem 2rem;
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+  .hero-cta:hover {
+    background: var(--accent);
+    transform: translateY(-2px);
+  }
+  .hero-cta .arrow {
+    transition: transform 0.3s;
+  }
+  .hero-cta:hover .arrow {
+    transform: translateX(4px);
+  }
+
+  .hero-image {
+    position: relative;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    border-radius: 2px;
+  }
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 25%;
+    filter: saturate(0.92) contrast(1.02);
+  }
+  .hero-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 60%, rgba(43, 37, 32, 0.08));
+    pointer-events: none;
+  }
+  .hero-image-frame {
+    position: absolute;
+    top: 1.5rem;
+    left: -1.5rem;
+    right: 1.5rem;
+    bottom: -1.5rem;
+    border: 1px solid var(--accent-soft);
+    z-index: -1;
+    border-radius: 2px;
+  }
+
+  /* ===== SECTION GENERIC ===== */
+  section {
+    padding: 7rem 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .section-label {
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+  }
+  .section-label::before {
+    content: '';
+    width: 2rem;
+    height: 1px;
+    background: var(--accent);
+  }
+  h2 {
+    font-family: var(--serif);
+    font-size: clamp(2.25rem, 4vw, 3.5rem);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 3rem;
+    max-width: 900px;
+  }
+  h2 em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 400;
+  }
+  h3 {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.8rem;
+  }
+
+  /* ===== MAYBE (sección 2) ===== */
+  .maybe {
+    background: var(--bg-alt);
+    max-width: none;
+    margin: 0 -100vw;
+    padding-left: calc(2.5rem + (100vw - 1200px) / 2);
+    padding-right: calc(2.5rem + (100vw - 1200px) / 2);
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+  @media (max-width: 1300px) {
+    .maybe { padding-left: 2.5rem; padding-right: 2.5rem; margin: 0; }
+  }
+  .maybe-inner { max-width: 1200px; margin: 0 auto; }
+  .maybe-list {
+    display: grid;
+    gap: 2.5rem;
+    margin-bottom: 4rem;
+    max-width: 900px;
+  }
+  .maybe-item {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    padding-left: 2rem;
+    position: relative;
+  }
+  .maybe-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.8rem;
+    width: 1.2rem;
+    height: 1px;
+    background: var(--accent);
+  }
+  .maybe-item strong {
+    color: var(--ink);
+    font-weight: 500;
+    font-style: italic;
+  }
+  .maybe-closing {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(1.5rem, 2.4vw, 2rem);
+    line-height: 1.4;
+    color: var(--ink);
+    border-top: 1px solid var(--rule);
+    padding-top: 3rem;
+    max-width: 800px;
+  }
+  .maybe-closing em {
+    color: var(--accent);
+  }
+
+  /* ===== QUE ES (sección 3) ===== */
+  .what {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .what-sticky {
+    position: sticky;
+    top: 8rem;
+  }
+  .what p {
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+    line-height: 1.75;
+    margin-bottom: 1.75rem;
+  }
+  .what p strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .what blockquote {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.5rem;
+    line-height: 1.5;
+    color: var(--ink);
+    border-left: 2px solid var(--accent);
+    padding-left: 1.5rem;
+    margin: 2.5rem 0;
+  }
+  .definitions {
+    display: grid;
+    gap: 0;
+    margin-top: 2.5rem;
+    border-top: 1px solid var(--rule);
+  }
+  .definition {
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 1.5rem;
+    align-items: baseline;
+  }
+  .definition .label {
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .definition .text {
+    color: var(--ink-soft);
+    font-size: 0.97rem;
+    line-height: 1.65;
+  }
+
+  /* ===== CÓMO TRABAJO (sección 4) ===== */
+  .how {
+    background: var(--bg-card);
+    max-width: none;
+    margin: 0 -100vw;
+    padding-left: calc(2.5rem + (100vw - 1200px) / 2);
+    padding-right: calc(2.5rem + (100vw - 1200px) / 2);
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+  @media (max-width: 1300px) {
+    .how { padding-left: 2.5rem; padding-right: 2.5rem; margin: 0; }
+  }
+  .how-inner { max-width: 1200px; margin: 0 auto; }
+  .how-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem 4rem;
+    margin-top: 3rem;
+  }
+  .how-item {
+    position: relative;
+    padding-left: 0;
+  }
+  .how-number {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  .how-item h3 {
+    margin-bottom: 1rem;
+  }
+  .how-item p {
+    color: var(--ink-soft);
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  /* ===== SOBRE MÍ (sección 5) ===== */
+  .about {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .about-image {
+    position: relative;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    border-radius: 2px;
+  }
+  .about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 25%;
+    filter: saturate(0.88) contrast(1.02) brightness(1.01);
+  }
+  .about-image-frame {
+    position: absolute;
+    top: -1.5rem;
+    right: -1.5rem;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    border: 1px solid var(--accent-soft);
+    z-index: -1;
+  }
+  .about-text p {
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+  .about-text p.lead {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.6rem;
+    line-height: 1.4;
+    color: var(--ink);
+    margin-bottom: 2.5rem;
+  }
+
+  /* ===== CREDENCIALES (sección 6) ===== */
+  .credentials {
+    padding-top: 4rem;
+    padding-bottom: 7rem;
+  }
+  .creds-list {
+    display: grid;
+    gap: 0;
+    border-top: 1px solid var(--rule);
+  }
+  .cred {
+    display: grid;
+    grid-template-columns: 120px 1fr auto;
+    gap: 2rem;
+    padding: 1.8rem 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: baseline;
+  }
+  .cred-year {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--accent);
+  }
+  .cred-title {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .cred-org {
+    font-family: var(--sans);
+    font-size: 0.88rem;
+    color: var(--ink-muted);
+    letter-spacing: 0.05em;
+  }
+
+  /* ===== RESERVA (sección 7) ===== */
+  .book {
+    background: var(--ink);
+    color: var(--bg);
+    max-width: none;
+    margin: 0 -100vw;
+    padding: 7rem calc(2.5rem + (100vw - 1200px) / 2);
+    text-align: center;
+  }
+  @media (max-width: 1300px) {
+    .book { padding-left: 2.5rem; padding-right: 2.5rem; margin: 0; }
+  }
+  .book-inner { max-width: 720px; margin: 0 auto; }
+  .book .section-label {
+    color: var(--accent-soft);
+    justify-content: center;
+  }
+  .book .section-label::before {
+    background: var(--accent-soft);
+  }
+  .book h2 {
+    color: var(--bg);
+    margin: 0 auto 2rem;
+  }
+  .book h2 em {
+    color: var(--accent-soft);
+  }
+  .book p {
+    color: rgba(244, 239, 230, 0.8);
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 3rem;
+  }
+  .book-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink);
+    background: var(--bg);
+    text-decoration: none;
+    padding: 1.2rem 2.4rem;
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+  .book-cta:hover {
+    background: var(--accent-soft);
+    color: var(--ink);
+    transform: translateY(-2px);
+  }
+  .book-alt {
+    margin-top: 3rem;
+    font-family: var(--serif);
+    font-style: italic;
+    color: rgba(244, 239, 230, 0.6);
+  }
+  .book-alt a {
+    color: var(--accent-soft);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(201, 152, 110, 0.4);
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    padding: 3rem 2.5rem;
+    text-align: center;
+    border-top: 1px solid var(--rule);
+    color: var(--ink-muted);
+    font-size: 0.82rem;
+    letter-spacing: 0.05em;
+  }
+  footer .brand {
+    display: block;
+    margin-bottom: 0.8rem;
+    font-size: 1.1rem;
+  }
+
+  /* ===== REVEAL ON SCROLL ===== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    html { scroll-behavior: auto; }
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 960px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-right { gap: 1rem; }
+    .brand { font-size: 1.1rem; }
+    .nav-cta { padding: 0.5rem 0.9rem; font-size: 0.72rem; }
+    .hero {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      padding: 7rem 1.5rem 4rem;
+    }
+    .hero-image {
+      max-width: 420px;
+      margin: 0 auto;
+      order: -1;
+    }
+    .hero-image-frame { display: none; }
+    section { padding: 5rem 1.5rem; }
+    .maybe, .how, .book {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+    .what {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    .what-sticky { position: static; }
+    .how-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .about {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    .about-image { max-width: 380px; }
+    .about-image-frame { display: none; }
+    .cred {
+      grid-template-columns: 1fr;
+      gap: 0.3rem;
+      padding: 1.5rem 0;
+    }
+    .definition {
+      grid-template-columns: 1fr;
+      gap: 0.4rem;
+    }
+    .maybe-item { font-size: 1.15rem; padding-left: 1.5rem; }
+  }
+
+  @media (max-width: 540px) {
+    .lang-switch { display: none; }
+    h2 { margin-bottom: 2rem; }
+    .hero h1 { font-size: 2.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav>
+  <a href="#" class="brand">Marta Fernández-Golfín <em>·</em> Coach</a>
+  <div class="nav-right">
+    <div class="lang-switch">
+      <span data-lang="es" class="active">ES</span>
+      <span data-lang="en">EN</span>
+    </div>
+    <a href="#reserva" class="nav-cta" data-es="Reservar" data-en="Book">Reservar</a>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-text reveal">
+    <div class="eyebrow" data-es="Coach Transpersonal · ICF" data-en="Transpersonal Coach · ICF">Coach Transpersonal · ICF</div>
+    <h1 data-es="Un espacio para &lt;em&gt;mirarte de cerca&lt;/em&gt; y decidir desde ahí."
+        data-en="A space to &lt;em&gt;look at yourself closely&lt;/em&gt;, and decide from there.">
+      Un espacio para <em>mirarte de cerca</em> y decidir desde ahí.
+    </h1>
+    <p data-es="Acompaño procesos de coaching transpersonal — un trabajo que va más allá de lo que piensas para incluir también lo que sientes, lo que crees sin saber que lo crees, y lo que tu cuerpo ya sabe antes que tú."
+       data-en="I accompany transpersonal coaching processes — work that goes beyond what you think to include what you feel, what you believe without knowing you believe it, and what your body already knows before you do.">
+      Acompaño procesos de coaching transpersonal — un trabajo que va más allá de lo que piensas para incluir también lo que sientes, lo que crees sin saber que lo crees, y lo que tu cuerpo ya sabe antes que tú.
+    </p>
+    <p data-es="Me gusta acompañar a la persona de forma integral, aunque llegue con temas muy distintos entre sí: un cambio de rumbo profesional, una decisión difícil, un momento de maternidad o de retorno, la sensación silenciosa de que algo tiene que moverse, una encrucijada mental. Todas esas puertas conducen al mismo sitio: a ti. Y es desde ahí donde me gusta trabajar."
+       data-en="I like to accompany the person as a whole, even when the topic they bring varies widely: a change of professional direction, a difficult decision, a moment of motherhood or return, the quiet sense that something needs to move, a mental crossroads. All of those doors lead to the same place: to you. And that's where I like to work.">
+      Me gusta acompañar a la persona de forma integral, aunque llegue con temas muy distintos entre sí: un cambio de rumbo profesional, una decisión difícil, un momento de maternidad o de retorno, la sensación silenciosa de que algo tiene que moverse, una encrucijada mental. Todas esas puertas conducen al mismo sitio: a ti. Y es desde ahí donde me gusta trabajar.
+    </p>
+    <div class="logistics" data-es="Sesiones online o presenciales en Madrid · Español · Inglés"
+         data-en="Sessions online or in person in Madrid · English · Spanish">
+      Sesiones online o presenciales en Madrid · Español · Inglés
+    </div>
+    <a href="#reserva" class="hero-cta">
+      <span data-es="Reservar primera sesión" data-en="Book a first session">Reservar primera sesión</span>
+      <span class="arrow">→</span>
+    </a>
+  </div>
+  <div class="hero-image reveal">
+    <div class="hero-image-frame"></div>
+    <img src="assets/marta.jpg" alt="Marta Fernández-Golfín">
+  </div>
+</section>
+
+<!-- ===== QUIZÁ ESTÁS AQUÍ PORQUE ===== -->
+<section class="maybe">
+  <div class="maybe-inner">
+    <div class="section-label reveal" data-es="Para quién" data-en="Who for">Para quién</div>
+    <h2 class="reveal" data-es="Quizá estás aquí &lt;em&gt;porque…&lt;/em&gt;"
+                      data-en="Maybe you're here &lt;em&gt;because…&lt;/em&gt;">
+      Quizá estás aquí <em>porque…</em>
+    </h2>
+    <div class="maybe-list">
+      <div class="maybe-item reveal"
+           data-es="&lt;strong&gt;Tienes que tomar una decisión&lt;/strong&gt; — un cambio de trabajo, un proyecto propio, un movimiento importante — y necesitas pensar desde un lugar que no sea el ruido de siempre."
+           data-en="&lt;strong&gt;You need to make a decision&lt;/strong&gt; — a job change, a project of your own, an important move — and you need to think from a place that isn't the usual noise.">
+        <strong>Tienes que tomar una decisión</strong> — un cambio de trabajo, un proyecto propio, un movimiento importante — y necesitas pensar desde un lugar que no sea el ruido de siempre.
+      </div>
+      <div class="maybe-item reveal"
+           data-es="&lt;strong&gt;Algo ha dejado de encajar&lt;/strong&gt; y no terminas de nombrarlo. Llevas años haciendo las cosas bien y aun así sientes que falta algo, o que sobra algo, o que ya no eres la misma que empezó este capítulo."
+           data-en="&lt;strong&gt;Something has stopped fitting&lt;/strong&gt; and you can't quite name it. You've been doing things right for years and still feel that something is missing, or something doesn't belong, or you're no longer the person who started this chapter.">
+        <strong>Algo ha dejado de encajar</strong> y no terminas de nombrarlo. Llevas años haciendo las cosas bien y aun así sientes que falta algo, o que sobra algo, o que ya no eres la misma que empezó este capítulo.
+      </div>
+      <div class="maybe-item reveal"
+           data-es="&lt;strong&gt;Estás atravesando una transición vital&lt;/strong&gt; — maternidad, vuelta al trabajo, el deseo o la duda de ser madre, una etapa nueva de pareja, el comienzo de una fase en la que la identidad se está reacomodando."
+           data-en="&lt;strong&gt;You're going through a life transition&lt;/strong&gt; — motherhood, returning to work, the desire or the doubt of becoming a mother, a new stage in a relationship, the beginning of a phase where identity is rearranging itself.">
+        <strong>Estás atravesando una transición vital</strong> — maternidad, vuelta al trabajo, el deseo o la duda de ser madre, una etapa nueva de pareja, el comienzo de una fase en la que la identidad se está reacomodando.
+      </div>
+      <div class="maybe-item reveal"
+           data-es="&lt;strong&gt;Te pesa liderar.&lt;/strong&gt; No técnicamente; de otra manera. Sientes que estás cumpliendo un rol pero no habitándolo, o que el coste personal de sostenerlo se está volviendo visible."
+           data-en="&lt;strong&gt;Leadership weighs on you.&lt;/strong&gt; Not technically; differently. You feel you're fulfilling a role but not inhabiting it, or the personal cost of sustaining it is becoming visible.">
+        <strong>Te pesa liderar.</strong> No técnicamente; de otra manera. Sientes que estás cumpliendo un rol pero no habitándolo, o que el coste personal de sostenerlo se está volviendo visible.
+      </div>
+      <div class="maybe-item reveal"
+           data-es="&lt;strong&gt;Quieres conocerte mejor&lt;/strong&gt;, sin motivo concreto, simplemente porque intuyes que hay una versión tuya que aún no has encontrado."
+           data-en="&lt;strong&gt;You want to know yourself better&lt;/strong&gt;, without a specific reason, simply because you sense there's a version of you that you haven't yet found.">
+        <strong>Quieres conocerte mejor</strong>, sin motivo concreto, simplemente porque intuyes que hay una versión tuya que aún no has encontrado.
+      </div>
+    </div>
+    <div class="maybe-closing reveal"
+         data-es="Todas esas puertas son la misma. Lo que va a cambiar no es el tema que traes — &lt;em&gt;es tu relación con él.&lt;/em&gt;"
+         data-en="All of those doors are the same. What's going to change isn't the subject you bring — &lt;em&gt;it's your relationship with it.&lt;/em&gt;">
+      Todas esas puertas son la misma. Lo que va a cambiar no es el tema que traes — <em>es tu relación con él.</em>
+    </div>
+  </div>
+</section>
+
+<!-- ===== QUÉ ES EL COACHING TRANSPERSONAL ===== -->
+<section class="what">
+  <div class="what-sticky reveal">
+    <div class="section-label" data-es="Método" data-en="Method">Método</div>
+    <h2 data-es="Qué es el &lt;em&gt;coaching transpersonal&lt;/em&gt;"
+        data-en="What transpersonal &lt;em&gt;coaching&lt;/em&gt; is">
+      Qué es el <em>coaching transpersonal</em>
+    </h2>
+  </div>
+  <div class="reveal">
+    <p data-es="El coaching transpersonal &lt;strong&gt;te mira entera&lt;/strong&gt;. No solo lo que piensas y lo que haces, sino también lo que sientes, lo que crees en lo más hondo, los patrones que se repiten, y las partes de ti que llevas sin escuchar mucho tiempo."
+       data-en="Transpersonal coaching &lt;strong&gt;sees you whole&lt;/strong&gt;. Not only what you think and what you do, but also what you feel, what you believe deep down, the patterns that repeat, and the parts of you that you've gone a long time without listening to.">
+      El coaching transpersonal <strong>te mira entera</strong>. No solo lo que piensas y lo que haces, sino también lo que sientes, lo que crees en lo más hondo, los patrones que se repiten, y las partes de ti que llevas sin escuchar mucho tiempo.
+    </p>
+    <blockquote data-es="&quot;Transpersonal&quot; significa literalmente &lt;em&gt;&quot;más allá de la persona&quot;&lt;/em&gt;. No porque dejemos la persona a un lado, sino porque aprendemos a observarla desde una perspectiva más amplia."
+                data-en="&quot;Transpersonal&quot; literally means &lt;em&gt;&quot;beyond the person&quot;&lt;/em&gt;. Not because we leave the person aside, but because we learn to observe her from a wider perspective.">
+      "Transpersonal" significa literalmente <em>"más allá de la persona"</em>. No porque dejemos la persona a un lado, sino porque aprendemos a observarla desde una perspectiva más amplia.
+    </blockquote>
+    <p data-es="La del observador interno, ese que puede ver patrones, creencias y emociones sin quedar atrapado en ellos. Desde ese lugar, lo que antes parecía un callejón sin salida empieza a tener opciones. Lo que antes era ruido empieza a tener sentido. Y las decisiones que tomas desde ahí son distintas — no necesariamente más rápidas, pero sí más tuyas."
+       data-en="That of the inner observer, the one who can see patterns, beliefs and emotions without getting trapped in them. From that place, what seemed like a dead end begins to have options. What was noise begins to have meaning. And the decisions you make from there are different — not necessarily faster, but more truly yours.">
+      La del observador interno, ese que puede ver patrones, creencias y emociones sin quedar atrapado en ellos. Desde ese lugar, lo que antes parecía un callejón sin salida empieza a tener opciones. Lo que antes era ruido empieza a tener sentido. Y las decisiones que tomas desde ahí son distintas — no necesariamente más rápidas, pero sí más tuyas.
+    </p>
+    <div class="definitions">
+      <div class="definition">
+        <div class="label" data-es="No es" data-en="Not">No es</div>
+        <div class="text"
+             data-es="&lt;strong&gt;Terapia.&lt;/strong&gt; No trabajamos con patologías ni con el pasado como objeto de cura."
+             data-en="&lt;strong&gt;Therapy.&lt;/strong&gt; We don't work with pathology or with the past as an object of cure.">
+          <strong>Terapia.</strong> No trabajamos con patologías ni con el pasado como objeto de cura.
+        </div>
+      </div>
+      <div class="definition">
+        <div class="label" data-es="No es" data-en="Not">No es</div>
+        <div class="text"
+             data-es="&lt;strong&gt;Mentoring.&lt;/strong&gt; No te digo qué hacer."
+             data-en="&lt;strong&gt;Mentoring.&lt;/strong&gt; I don't tell you what to do.">
+          <strong>Mentoring.</strong> No te digo qué hacer.
+        </div>
+      </div>
+      <div class="definition">
+        <div class="label" data-es="No es" data-en="Not">No es</div>
+        <div class="text"
+             data-es="&lt;strong&gt;Consejo.&lt;/strong&gt; Las respuestas las construyes tú."
+             data-en="&lt;strong&gt;Advice.&lt;/strong&gt; You build the answers yourself.">
+          <strong>Consejo.</strong> Las respuestas las construyes tú.
+        </div>
+      </div>
+      <div class="definition">
+        <div class="label" data-es="Es" data-en="Is">Es</div>
+        <div class="text"
+             data-es="&lt;strong&gt;Un proceso estructurado, profundo, y con método.&lt;/strong&gt;"
+             data-en="&lt;strong&gt;A structured process, deep, and with method.&lt;/strong&gt;">
+          <strong>Un proceso estructurado, profundo, y con método.</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CÓMO TRABAJO ===== -->
+<section class="how">
+  <div class="how-inner">
+    <div class="section-label reveal" data-es="Proceso" data-en="Process">Proceso</div>
+    <h2 class="reveal" data-es="Cómo &lt;em&gt;trabajo&lt;/em&gt;" data-en="How I &lt;em&gt;work&lt;/em&gt;">
+      Cómo <em>trabajo</em>
+    </h2>
+    <div class="how-grid">
+      <div class="how-item reveal">
+        <span class="how-number">i.</span>
+        <h3 data-es="Qué pasa en una sesión" data-en="What happens in a session">Qué pasa en una sesión</h3>
+        <p data-es="Defines un objetivo. Exploramos qué te está frenando — creencias, patrones, miedos, dinámicas que no habías visto. Identificamos tus recursos y fortalezas. Construimos opciones concretas. Cierras con un compromiso claro que puedas llevar a tu vida."
+           data-en="You set a goal. We explore what's getting in the way — beliefs, patterns, fears, dynamics you hadn't seen. We identify your resources and strengths. We build concrete options. You close with a clear commitment you can take into your life.">
+          Defines un objetivo. Exploramos qué te está frenando — creencias, patrones, miedos, dinámicas que no habías visto. Identificamos tus recursos y fortalezas. Construimos opciones concretas. Cierras con un compromiso claro que puedas llevar a tu vida.
+        </p>
+      </div>
+      <div class="how-item reveal">
+        <span class="how-number">ii.</span>
+        <h3 data-es="Algunas herramientas que uso" data-en="Some tools I use">Algunas herramientas que uso</h3>
+        <p data-es="Gestión de emociones, trabajo con creencias limitantes, visualizaciones guiadas, trabajo con facetas de la personalidad, exploración de valores y propósito, técnicas orientadas a los recursos."
+           data-en="Emotion management, work with limiting beliefs, guided visualisations, work with facets of the personality, exploration of values and purpose, resource-oriented techniques.">
+          Gestión de emociones, trabajo con creencias limitantes, visualizaciones guiadas, trabajo con facetas de la personalidad, exploración de valores y propósito, técnicas orientadas a los recursos.
+        </p>
+      </div>
+      <div class="how-item reveal">
+        <span class="how-number">iii.</span>
+        <h3 data-es="Formato" data-en="Format">Formato</h3>
+        <p data-es="Procesos de 6 a 8 sesiones, de 60 a 75 minutos cada una, habitualmente con cadencia quincenal. La primera sesión es exploratoria y gratuita — nos conocemos y decidimos juntas si tiene sentido seguir."
+           data-en="Engagements of 6 to 8 sessions, 60 to 75 minutes each, typically at a two-week cadence. The first session is exploratory and free — we meet and decide together whether it makes sense to continue.">
+          Procesos de 6 a 8 sesiones, de 60 a 75 minutos cada una, habitualmente con cadencia quincenal. La primera sesión es exploratoria y gratuita — nos conocemos y decidimos juntas si tiene sentido seguir.
+        </p>
+      </div>
+      <div class="how-item reveal">
+        <span class="how-number">iv.</span>
+        <h3 data-es="Modalidad" data-en="Mode">Modalidad</h3>
+        <p data-es="Online por videollamada o presencial en Madrid."
+           data-en="Online via video call, or in person in Madrid.">
+          Online por videollamada o presencial en Madrid.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SOBRE MÍ ===== -->
+<section class="about">
+  <div class="about-image reveal">
+    <div class="about-image-frame"></div>
+    <img src="assets/marta.jpg" alt="Marta Fernández-Golfín">
+  </div>
+  <div class="about-text reveal">
+    <div class="section-label" data-es="Sobre mí" data-en="About me">Sobre mí</div>
+    <h2 data-es="Soy &lt;em&gt;Marta Fernández-Golfín.&lt;/em&gt;"
+        data-en="I'm &lt;em&gt;Marta Fernández-Golfín.&lt;/em&gt;">
+      Soy <em>Marta Fernández-Golfín.</em>
+    </h2>
+    <p class="lead"
+       data-es="Durante más de una década he trabajado en multinacionales de gran consumo — primero en Unilever y los últimos siete años en Grupo Bimbo, donde me ocupo de innovación estratégica y partnerships con startups en Europa, Oriente Medio e Israel. Antes de eso trabajé en Naciones Unidas en Nueva York."
+       data-en="For over a decade I've worked in multinational consumer companies — first at Unilever and for the last seven years at Grupo Bimbo, where I focus on strategic innovation and startup partnerships across Europe, the Middle East and Israel. Before that I worked at the United Nations in New York.">
+      Durante más de una década he trabajado en multinacionales de gran consumo — primero en Unilever y los últimos siete años en Grupo Bimbo, donde me ocupo de innovación estratégica y partnerships con startups en Europa, Oriente Medio e Israel. Antes de eso trabajé en Naciones Unidas en Nueva York.
+    </p>
+    <p data-es="Esa parte de mí explica por qué entiendo bien el ámbito ejecutivo desde dentro — las decisiones difíciles, el liderazgo y sus implicaciones, los momentos de transición en los que todo parece jugarse a la vez, la tensión entre rendir y sostenerse. Cuando trabajo con ejecutivas y ejecutivos, no parto de la teoría."
+       data-en="That part of me explains why I understand the executive world from the inside — difficult decisions, the weight and implications of leadership, transition moments where everything seems to be at stake at once, the tension between performing and sustaining yourself. When I work with executives, I'm not drawing from theory.">
+      Esa parte de mí explica por qué entiendo bien el ámbito ejecutivo desde dentro — las decisiones difíciles, el liderazgo y sus implicaciones, los momentos de transición en los que todo parece jugarse a la vez, la tensión entre rendir y sostenerse. Cuando trabajo con ejecutivas y ejecutivos, no parto de la teoría.
+    </p>
+    <p data-es="En lo personal, la maternidad es lo que me ha traído al coaching. Y el coaching me ha ayudado a entender mi nueva identidad, mi rol en mi familia y en mi vida — a escuchar mi cuerpo aunque mi cabeza se empeñase en ignorarlo."
+       data-en="Personally, motherhood is what brought me to coaching. And coaching has helped me understand my new identity, my role in my family and in my life — to listen to my body even when my mind insisted on ignoring it.">
+      En lo personal, la maternidad es lo que me ha traído al coaching. Y el coaching me ha ayudado a entender mi nueva identidad, mi rol en mi familia y en mi vida — a escuchar mi cuerpo aunque mi cabeza se empeñase en ignorarlo.
+    </p>
+    <p data-es="Por eso decidí formarme como coach transpersonal en &lt;strong&gt;InnerKey Coaching Academy&lt;/strong&gt;, programa acreditado por la International Coaching Federation (ICF). Trabajo bajo su código ético."
+       data-en="That's why I decided to train as a transpersonal coach at &lt;strong&gt;InnerKey Coaching Academy&lt;/strong&gt;, a programme accredited by the International Coaching Federation (ICF). I practice under its ethical code.">
+      Por eso decidí formarme como coach transpersonal en <strong>InnerKey Coaching Academy</strong>, programa acreditado por la International Coaching Federation (ICF). Trabajo bajo su código ético.
+    </p>
+    <p data-es="Hablo español e inglés con fluidez profesional. Entiendo portugués informalmente."
+       data-en="I work fluently in English and Spanish. I understand Portuguese informally.">
+      Hablo español e inglés con fluidez profesional. Entiendo portugués informalmente.
+    </p>
+  </div>
+</section>
+
+<!-- ===== CREDENCIALES ===== -->
+<section class="credentials">
+  <div class="section-label reveal" data-es="Formación" data-en="Education">Formación</div>
+  <h2 class="reveal" data-es="&lt;em&gt;Credenciales&lt;/em&gt;" data-en="&lt;em&gt;Credentials&lt;/em&gt;">
+    <em>Credenciales</em>
+  </h2>
+  <div class="creds-list">
+    <div class="cred reveal">
+      <div class="cred-year" data-es="En curso" data-en="In progress">En curso</div>
+      <div class="cred-title" data-es="Coach Transpersonal" data-en="Transpersonal Coach">Coach Transpersonal</div>
+      <div class="cred-org" data-es="InnerKey Coaching Academy · Acreditada ICF"
+                             data-en="InnerKey Coaching Academy · ICF accredited">InnerKey Coaching Academy · Acreditada ICF</div>
+    </div>
+    <div class="cred reveal">
+      <div class="cred-year" data-es="Postgrado" data-en="Postgraduate">Postgrado</div>
+      <div class="cred-title" data-es="Certificate in Global Management" data-en="Certificate in Global Management">Certificate in Global Management</div>
+      <div class="cred-org">INSEAD</div>
+    </div>
+    <div class="cred reveal">
+      <div class="cred-year" data-es="Grado" data-en="Degree">Grado</div>
+      <div class="cred-title" data-es="Business Administration" data-en="Business Administration">Business Administration</div>
+      <div class="cred-org" data-es="Licenciatura" data-en="Bachelor's degree">Licenciatura</div>
+    </div>
+    <div class="cred reveal">
+      <div class="cred-year" data-es="14+ años" data-en="14+ years">14+ años</div>
+      <div class="cred-title" data-es="Multinacionales y organismos internacionales"
+                              data-en="Multinationals and international organisations">
+        Multinacionales y organismos internacionales
+      </div>
+      <div class="cred-org">Unilever · Grupo Bimbo · Naciones Unidas</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RESERVA ===== -->
+<section class="book" id="reserva">
+  <div class="book-inner">
+    <div class="section-label reveal" data-es="Empezar" data-en="Begin">Empezar</div>
+    <h2 class="reveal"
+        data-es="Primera sesión: 30 minutos, &lt;em&gt;gratuita&lt;/em&gt;, sin compromiso."
+        data-en="First session: 30 minutes, &lt;em&gt;free&lt;/em&gt;, no commitment.">
+      Primera sesión: 30 minutos, <em>gratuita</em>, sin compromiso.
+    </h2>
+    <p class="reveal"
+       data-es="Nos conocemos, me cuentas qué te trae, y decidimos juntas si tiene sentido trabajar. Si tras esa conversación decides empezar un proceso, acordamos objetivos, formato y tarifa."
+       data-en="We meet, you tell me what brings you, and we decide together whether it makes sense to work. If after that conversation you decide to begin a process, we agree on objectives, format and fees.">
+      Nos conocemos, me cuentas qué te trae, y decidimos juntas si tiene sentido trabajar. Si tras esa conversación decides empezar un proceso, acordamos objetivos, formato y tarifa.
+    </p>
+    <a href="mailto:hola@martafernandezgolfin.com?subject=Sesi%C3%B3n%20exploratoria" class="book-cta reveal">
+      <span data-es="Escribirme para agendar" data-en="Write me to schedule">Escribirme para agendar</span>
+      <span class="arrow">→</span>
+    </a>
+    <div class="book-alt reveal">
+      <span data-es="O directamente: " data-en="Or directly: ">O directamente: </span>
+      <a href="mailto:hola@martafernandezgolfin.com">hola@martafernandezgolfin.com</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <span class="brand">Marta Fernández-Golfín <em style="color: var(--accent);">·</em> <span data-es="Coach Transpersonal" data-en="Transpersonal Coach">Coach Transpersonal</span></span>
+  <div data-es="© 2026 · Madrid · En curso de certificación acreditada ICF"
+       data-en="© 2026 · Madrid · Certification in progress, ICF accredited">
+    © 2026 · Madrid · En curso de certificación acreditada ICF
+  </div>
+</footer>
+
+<script>
+  // ===== Reveal on scroll =====
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+
+  document.querySelectorAll('.reveal').forEach((el, i) => {
+    el.style.transitionDelay = `${Math.min(i * 60, 300)}ms`;
+    observer.observe(el);
+  });
+
+  // ===== Language switcher =====
+  function setLang(lang) {
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-es][data-en]').forEach(el => {
+      const html = el.getAttribute('data-' + lang);
+      if (html !== null) el.innerHTML = html;
+    });
+    document.querySelectorAll('.lang-switch span[data-lang]').forEach(s => {
+      s.classList.toggle('active', s.getAttribute('data-lang') === lang);
+    });
+    try { localStorage.setItem('marta-lang', lang); } catch(e) {}
+  }
+
+  document.querySelectorAll('.lang-switch span[data-lang]').forEach(s => {
+    s.addEventListener('click', () => setLang(s.getAttribute('data-lang')));
+  });
+
+  // Auto-detect on first visit
+  (function() {
+    let saved = null;
+    try { saved = localStorage.getItem('marta-lang'); } catch(e) {}
+    if (saved === 'es' || saved === 'en') {
+      setLang(saved);
+    } else {
+      const browser = (navigator.language || 'es').toLowerCase();
+      if (browser.startsWith('en')) setLang('en');
+    }
+  })();
+</script>
+
+</body>
+</html>
