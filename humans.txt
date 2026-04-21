@@ -1,0 +1,11 @@
+/* TEAM */
+  Coach: Marta Fernández-Golfín
+  Location: Madrid, España
+  Site: https://martafgolfin.com
+
+/* SITE */
+  Last update: 2026-04-21
+  Language: Español / English
+  Standards: HTML5, CSS3, vanilla JS
+  Components: Cormorant Garamond (Google Fonts), Inter (Google Fonts)
+  Hosting: GitHub Pages
