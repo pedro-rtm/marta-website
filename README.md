@@ -1,6 +1,10 @@
 # Web de Marta Fernández-Golfín
 
-Sitio web estático, bilingüe (ES/EN), listo para publicar.
+Sitio web estático y bilingüe (ES/EN).
+
+- URL canónica: <https://martafgolfin.com>
+- Producción: Cloudflare Pages, proyecto `marta-website`
+- Fuente: rama `main` de este repositorio
 
 ---
 
@@ -25,27 +29,32 @@ python3 -m http.server 8000
 
 ---
 
-## Cómo publicarlo online
+## Publicación
 
-Tienes dos caminos. Recomiendo el primero.
+Producción usa Cloudflare Pages mediante Wrangler Direct Upload. GitHub conserva la
+fuente; GitHub Pages no forma parte del despliegue.
 
-### Opción A — Netlify (más sencillo, 10 minutos)
+Autentica Wrangler localmente y, desde la raíz del repositorio, publica el contenido
+del último commit:
 
-1. Ve a https://netlify.com y crea cuenta gratis con tu gmail
-2. Desde el dashboard, arrastra la carpeta `web_marta` completa a la zona que dice "Drag and drop your site folder here"
-3. Netlify te da una URL tipo `random-name-abc123.netlify.app` — ya está online
-4. **Para conectar el dominio propio:**
-   - Compra `martafernandezgolfin.com` en Cloudflare (10€/año) o Namecheap
-   - En Netlify: Site settings → Domain management → Add custom domain
-   - Netlify te da 2 registros DNS (tipo `A` y `CNAME`)
-   - Los pegas en el panel de DNS de tu registrador
-   - SSL automático en 5-10 minutos
+```bash
+(
+  set -e
+  deploy_dir="$(mktemp -d)"
+  trap 'rm -rf "$deploy_dir"' EXIT
+  git archive --format=tar HEAD | tar -xf - -C "$deploy_dir"
+  npx --yes wrangler pages deploy "$deploy_dir" \
+    --project-name marta-website \
+    --branch main \
+    --commit-hash "$(git rev-parse HEAD)" \
+    --commit-message "$(git log -1 --pretty=%s)"
+)
+```
 
-**Coste total:** dominio 10€/año. Hosting 0€. SSL 0€.
-
-### Opción B — Vercel
-
-Mismo procedimiento que Netlify. Funciona igual de bien.
+El archivo de despliegue contiene solo los activos publicados; la documentación se
+excluye mediante `.gitattributes`. No guardes credenciales en el repositorio. Si el
+despliegue se automatiza más adelante, usa un token limitado a Cloudflare Pages, no
+una credencial con permisos DNS.
 
 ---
 
@@ -57,7 +66,7 @@ El sitio usa un sistema bilingüe con atributos `data-es` y `data-en` en cada el
 2. Busca el texto que quieras cambiar
 3. **Verás dos versiones:** una en `data-es="..."` y otra en `data-en="..."`, seguidas del texto visible.
 4. **Edita las tres:** el atributo `data-es`, el atributo `data-en`, y el texto que hay dentro del elemento
-5. Guarda y re-sube a Netlify (arrastre simple)
+5. Guarda, crea un commit y vuelve a ejecutar el despliegue de Cloudflare Pages
 
 Ejemplo:
 ```html
@@ -126,7 +135,7 @@ Cosas que podrías añadir más adelante si te hacen falta:
 - Testimonios (espera a tener clientas reales)
 - Blog o contenido
 - Analytics (considera Plausible, 9€/mes, GDPR-compliant sin cookies)
-- Favicon personalizado (Framer/Netlify te generan uno genérico)
+- Favicon personalizado
 
 ---
 
