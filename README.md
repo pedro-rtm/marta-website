@@ -76,7 +76,7 @@ desactivado. Sustituye el token antes de que queden 30 días de vigencia.
 Cuando la tarea actual autorice expresamente publicar en producción:
 
 ```bash
-npm run cloudflare:deploy
+npm run deploy
 ```
 
 El ejecutor comprueba que `HEAD`, `origin/main` y la rama remota coincidan, instala el
