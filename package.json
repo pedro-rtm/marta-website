@@ -1,0 +1,15 @@
+{
+  "name": "marta-website",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "cloudflare:status": "/opt/homebrew/opt/node@24/bin/node tools/portfolio-credentials/bin/status.mjs",
+    "cloudflare:enroll": "/opt/homebrew/opt/node@24/bin/node tools/portfolio-credentials/bin/enroll.mjs",
+    "cloudflare:verify": "/opt/homebrew/opt/node@24/bin/node tools/portfolio-credentials/bin/verify.mjs",
+    "cloudflare:deploy": "/opt/homebrew/opt/node@24/bin/node tools/portfolio-credentials/bin/deploy.mjs"
+  },
+  "engines": {
+    "node": "24.20.0"
+  }
+}

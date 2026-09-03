@@ -2,3 +2,6 @@ README.md export-ignore
 .gitattributes export-ignore
 .gitignore export-ignore
 .claude export-ignore
+package.json export-ignore
+package-lock.json export-ignore
+tools/portfolio-credentials export-ignore

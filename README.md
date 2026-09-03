@@ -34,27 +34,63 @@ python3 -m http.server 8000
 Producción usa Cloudflare Pages mediante Wrangler Direct Upload. GitHub conserva la
 fuente; GitHub Pages no forma parte del despliegue.
 
-Autentica Wrangler localmente y, desde la raíz del repositorio, publica el contenido
-del último commit:
+El ejecutor versionado en `tools/portfolio-credentials/` es la única ruta rutinaria
+revisada. No acepta argumentos de destino y fija la cuenta, el proyecto
+`marta-website`, su identificador inmutable
+`5401624b-c5ae-4c4b-889b-560a1f317d7c`, la rama `main` y los límites del archivo en
+`capability.json`. El ejecutor, no el paquete de la aplicación, contiene Wrangler
+`4.128.0` y su lockfile revisado.
+
+El contrato admite solo un sitio estático por Direct Upload: no Git-integrated Pages,
+Pages Functions, `_worker.js`, configuración Wrangler ambiental ni ramas de preview.
+
+### Activación de la credencial (una vez)
+
+La activación se hace desde una rama `main` limpia, ya guardada y publicada en
+`origin`. El token debe ser propiedad de la cuenta, caducar normalmente a los 180
+días y tener únicamente Cloudflare Pages Write; no debe incluir Workers, storage,
+DNS, WAF, Billing ni administración de tokens.
+
+| Campo | Valor fijo |
+| --- | --- |
+| Cuenta Cloudflare | `82675093f8de0440782f81032b6a33d1` |
+| Elemento de recuperación en 1Password | `Marta Website Cloudflare Pages Deploy` |
+| Réplica de ejecución en Keychain | servicio `com.pedrortm.marta-website.cloudflare.pages-deploy`, cuenta `api-token` |
+
+Después de que el propietario cree y guarde el token revisado, ejecuta:
 
 ```bash
-(
-  set -e
-  deploy_dir="$(mktemp -d)"
-  trap 'rm -rf "$deploy_dir"' EXIT
-  git archive --format=tar HEAD | tar -xf - -C "$deploy_dir"
-  npx --yes wrangler pages deploy "$deploy_dir" \
-    --project-name marta-website \
-    --branch main \
-    --commit-hash "$(git rev-parse HEAD)" \
-    --commit-message "$(git log -1 --pretty=%s)"
-)
+npm run cloudflare:status
+npm run cloudflare:enroll
+npm run cloudflare:verify
 ```
 
-El archivo de despliegue contiene solo los activos publicados; la documentación se
-excluye mediante `.gitattributes`. No guardes credenciales en el repositorio. Si el
-despliegue se automatiza más adelante, usa un token limitado a Cloudflare Pages, no
-una credencial con permisos DNS.
+`enroll` transfiere el secreto desde el registro nombrado de 1Password mediante una
+entrada oculta; el valor no debe copiarse a comandos, variables de entorno ni archivos.
+Ejecuta `verify` inmediatamente después y comprueba en Acceso a Llaveros que solo
+`/usr/bin/security` está autorizado y que «Permitir a todas las aplicaciones» está
+desactivado. Sustituye el token antes de que queden 30 días de vigencia.
+
+### Despliegue rutinario
+
+Cuando la tarea actual autorice expresamente publicar en producción:
+
+```bash
+npm run cloudflare:deploy
+```
+
+El ejecutor comprueba que `HEAD`, `origin/main` y la rama remota coincidan, instala el
+Wrangler fijado en un entorno privado y despliega un `git archive HEAD`. La
+documentación, el ejecutor y sus metadatos se excluyen mediante `.gitattributes`.
+La recuperación rutinaria desde Keychain es desatendida y no abre 1Password; poseer o
+recuperar el token no autoriza por sí solo un despliegue.
+
+Pages Write puede afectar otros proyectos de la misma cuenta aunque el ejecutor fije
+este destino. Si el token se expone, resulta excesivo, se sustituye o se retira el
+sitio, revócalo primero en Cloudflare y elimina únicamente la réplica exacta de
+Keychain; conserva el registro de ciclo de vida sin secreto en 1Password. La rotación
+crea, activa y verifica el reemplazo antes de revocar el anterior. Consulta también
+[`tools/portfolio-credentials/README.md`](tools/portfolio-credentials/README.md).
 
 ---
 
