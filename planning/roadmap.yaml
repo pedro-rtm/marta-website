@@ -1,5 +1,6 @@
-# Marta website engineering ledger. Schema: studio repository-roadmap v1 (~/Stuff/.portfolio/templates/repository-roadmap.yaml). Created 2026-10-09 by the studio lane (GOV-S2.3d).
-# Project mode (recorded on the project card, not authoritative here): MARKETING-ONLY. Maintenance, deployment verification and accuracy fixes only. The project card is pending cleanup item C14; project_id is the repository name until it exists.
+# Marta website engineering ledger, in the studio roadmap schema (v1). Created 2026-10-09 by the studio lane.
+# Project mode (recorded on the project card, not authoritative here): MARKETING-ONLY. Maintenance, deployment verification and accuracy fixes only. The project card does not exist yet; project_id is the repository name until it does.
+# Deployment: when content needs publishing, the studio deploys through the authenticated Cloudflare plugin (Direct Upload); no project token or enrollment is needed.
 # Content approvals (wording, photo, testimonials, contact details) belong to the owner and family, never to this ledger.
 schema_version: 1
 project_id: marta-website
@@ -41,15 +42,16 @@ work_packages:
           deployment: null
           verified_at: null
       - id: MARTA-R1.1b
-        title: Reconcile README contact-email and booking notes with index.html
-        outcome: README guidance on email and Calendly matches what index.html actually uses.
+        title: Reconcile the README's statement of the contact address with index.html
+        outcome: README states the contact address the site actually uses. index.html has no mailto link; its booking section uses the copy-email button (#copyEmailBtn, address assembled from data-local and data-domain).
         status: ready
         depends_on: []
         acceptance:
-          - Every address and booking link named in README appears in index.html, or the README passage is removed.
+          - README's description of the current contact mechanism and address matches #copyEmailBtn in index.html (copy-email button, not a mailto link, and the same address).
+          - The README's Calendly how-to may stay as optional guidance; it is not required to be deleted, only not to misdescribe the current CTA.
         verify:
-          - "grep -n -E 'hola@|mailto|calendly' README.md"
-          - "grep -n -o -E 'mailto:[^\"]+|calendly[^\"]*' index.html"
+          - "grep -n -E 'hola@|mailto|copyEmail' README.md"
+          - "grep -n -o -E 'id=\"copyEmailBtn\"[^>]*' index.html"
         delivery: documentation
         blocker: null
         evidence:
@@ -83,14 +85,8 @@ work_packages:
           verified_at: null
 
 owner_actions:
-  - id: OWNER-1
-    action: "Decide whether to activate the Cloudflare Pages deploy credential described in README (scoped Pages Write token, enrolled via npm run cloudflare:enroll). Recommendation: activate only when the next content change needs publishing; do not create the token speculatively."
-    owner: Pedro
-    status: open
-    blocks: []
-    evidence: null
   - id: OWNER-2
-    action: "Create the project card (cleanup item C14: MARKETING-ONLY) recording audience, owner and public visibility. Recommendation: create it with project_id marta-website and link this ledger as its engineering_ledger."
+    action: "Create the project card (MARKETING-ONLY) recording audience, owner and public visibility. Recommendation: create it with project_id marta-website and link this ledger as its engineering_ledger."
     owner: Pedro
     status: open
     blocks: []
