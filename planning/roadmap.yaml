@@ -1,0 +1,95 @@
+# Marta website engineering ledger, in the studio roadmap schema (v1). Created 2026-10-09 by the studio lane.
+# Project mode (recorded on the project card, not authoritative here): MARKETING-ONLY. Maintenance, deployment verification and accuracy fixes only. The project card does not exist yet; project_id is the repository name until it does.
+# Deployment: when content needs publishing, the studio deploys through the authenticated Cloudflare plugin (Direct Upload); no project token or enrollment is needed.
+# Content approvals (wording, photo, testimonials, contact details) belong to the owner and family, never to this ledger.
+schema_version: 1
+project_id: marta-website
+repository: pedro-rtm/marta-website
+trust_boundary: Public repository holding the static bilingual (ES/EN) professional site for Marta Fernandez-Golfin, served at martafgolfin.com via Cloudflare Pages (Direct Upload). Deployment credentials are never stored here.
+current_outcome: The published site and its README accurately describe the current content and the Cloudflare Pages deployment path.
+wip_limit: 1
+
+releases:
+  - id: R1
+    title: Documentation and deployment accuracy
+    outcome: README matches the site as built and the deployment path is confirmed working.
+
+work_packages:
+  - id: MARTA-R1.1
+    release: R1
+    title: Align README with the current site
+    outcome: The README no longer describes the pre-launch state.
+    sizing: decomposed
+    admission:
+      rationale: Accuracy fix to public documentation; no change to site content or features.
+      evidence: "README.md 'Que NO hace este sitio todavia' lists favicons as missing, but commit 8652e87 (2026-04-21) added them; README file list omits files such as favicons, manifest, robots.txt, sitemap.xml and the tools/ runner; README local-run example uses 'cd web_marta'."
+    slices:
+      - id: MARTA-R1.1a
+        title: Correct stale README statements
+        outcome: README file list, local-run path and not-yet-built list reflect the repository as it is.
+        status: ready
+        depends_on: []
+        acceptance:
+          - README does not claim a custom favicon is missing and does not reference the directory web_marta.
+          - README file list names the favicon, manifest, robots, sitemap, llms.txt, humans.txt and tools/portfolio-credentials entries present in the repository.
+        verify:
+          - "! grep -n -E 'web_marta|Favicon personalizado' README.md"
+          - "git ls-files | head -40"
+        delivery: documentation
+        blocker: null
+        evidence:
+          commit: null
+          deployment: null
+          verified_at: null
+      - id: MARTA-R1.1b
+        title: Reconcile the README's statement of the contact address with index.html
+        outcome: README states the contact address the site actually uses. index.html has no mailto link; its booking section uses the copy-email button (#copyEmailBtn, address assembled from data-local and data-domain).
+        status: ready
+        depends_on: []
+        acceptance:
+          - README's description of the current contact mechanism and address matches #copyEmailBtn in index.html (copy-email button, not a mailto link, and the same address).
+          - The README's Calendly how-to may stay as optional guidance; it is not required to be deleted, only not to misdescribe the current CTA.
+        verify:
+          - "grep -n -E 'hola@|mailto|copyEmail' README.md"
+          - "grep -n -o -E 'id=\"copyEmailBtn\"[^>]*' index.html"
+        delivery: documentation
+        blocker: null
+        evidence:
+          commit: null
+          deployment: null
+          verified_at: null
+  - id: MARTA-R1.2
+    release: R1
+    title: Confirm the deployment path
+    outcome: Production at martafgolfin.com is observed serving the current main.
+    sizing: unestimated
+    admission:
+      rationale: Hosting moved to Cloudflare Pages in commits cb0cae7, 86dbda9 and 3796e54 (2026-09-02/03); no repository evidence records that the runner was activated or a deployment verified.
+      evidence: Git log of origin/main.
+    slices:
+      - id: MARTA-R1.2a
+        title: Observe production against main
+        outcome: A recorded check that martafgolfin.com is served by Cloudflare Pages with content matching main.
+        status: ready
+        depends_on: []
+        acceptance:
+          - "https://martafgolfin.com responds 200 with Cloudflare headers and the title in index.html."
+        verify:
+          - "curl -sI https://martafgolfin.com | grep -i -E 'HTTP/|server|cf-ray'"
+          - "curl -s https://martafgolfin.com | grep -o '<title>[^<]*</title>'"
+        delivery: production
+        blocker: null
+        evidence:
+          commit: null
+          deployment: null
+          verified_at: null
+
+owner_actions:
+  - id: OWNER-2
+    action: "Create the project card (MARKETING-ONLY) recording audience, owner and public visibility. Recommendation: create it with project_id marta-website and link this ledger as its engineering_ledger."
+    owner: Pedro
+    status: open
+    blocks: []
+    evidence: null
+
+backlog: []
