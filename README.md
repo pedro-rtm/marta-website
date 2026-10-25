@@ -125,7 +125,7 @@ Si solo cambias el texto visible pero no los atributos `data-*`, el cambio desap
 
 ## Cómo conectar Calendly
 
-Actualmente la sección de reserva (`<section class="book" id="reserva">`) no usa `mailto:`: tiene un botón "Copiar email" (`#copyEmailBtn`) que copia al portapapeles la dirección `martafernandezgolfin@gmail.com`. La dirección se monta en JavaScript a partir de `data-local="martafernandezgolfin"` y `data-domain="gmail.com"`. Esta guía es opcional; para sustituir ese botón por Calendly:
+Actualmente la sección de reserva (`<section class="book" id="reserva">`) no usa `mailto:`: tiene un botón "Copiar email" (`#copyEmailBtn`) que copia al portapapeles la dirección de contacto. La dirección se monta en JavaScript a partir de los atributos `data-local` y `data-domain` del botón, en `index.html`. Esta guía es opcional; para sustituir ese botón por Calendly:
 
 1. Crea cuenta en Calendly y configura tu evento "Sesión exploratoria 30 min"
 2. En `index.html`, busca el botón `<button type="button" id="copyEmailBtn" ...>` y reemplázalo por un enlace: `<a class="book-cta reveal" href="https://calendly.com/tu-usuario/sesion-exploratoria">`
@@ -149,7 +149,7 @@ Los parámetros `background_color`, `text_color` y `primary_color` hacen que el 
 
 ## Dirección de contacto
 
-El sitio usa `martafernandezgolfin@gmail.com`, montada a partir de `data-local` y `data-domain` en `#copyEmailBtn` (así no aparece completa en el HTML). Para cambiarla, edita esos dos atributos en `index.html`.
+La dirección de contacto se monta a partir de los atributos `data-local` y `data-domain` del botón `#copyEmailBtn` (así no aparece completa en el HTML). `index.html` es la única fuente de la dirección: para cambiarla, edita esos dos atributos allí; el README no la repite.
 
 ---
 
