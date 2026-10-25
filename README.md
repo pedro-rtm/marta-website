@@ -12,6 +12,14 @@ Sitio web estático y bilingüe (ES/EN).
 
 - `index.html` — el sitio completo en un solo archivo (HTML + CSS + JS inline)
 - `assets/marta.jpg` — foto de perfil
+- `favicon.svg`, `favicon.ico`, `favicon-16x16.png`, `favicon-32x32.png`, `apple-touch-icon.png`, `icon-192.png`, `icon-512.png` — favicon e iconos
+- `site.webmanifest` — manifiesto de la aplicación web
+- `og-image.png` — imagen para compartir en redes
+- `robots.txt`, `sitemap.xml` — indexación en buscadores
+- `llms.txt` — resumen del sitio para modelos de lenguaje
+- `humans.txt` — créditos del sitio
+- `tools/portfolio-credentials/` — ejecutor de despliegue a Cloudflare Pages (ver «Publicación»)
+- `planning/roadmap.yaml` — hoja de ruta del proyecto
 - `README.md` — este archivo
 
 ---
@@ -22,7 +30,6 @@ Abre `index.html` directamente en tu navegador haciendo doble clic. Funciona sin
 
 Si prefieres servidor local (opcional):
 ```bash
-cd web_marta
 python3 -m http.server 8000
 # Abre http://localhost:8000
 ```
@@ -171,7 +178,6 @@ Cosas que podrías añadir más adelante si te hacen falta:
 - Testimonios (espera a tener clientas reales)
 - Blog o contenido
 - Analytics (considera Plausible, 9€/mes, GDPR-compliant sin cookies)
-- Favicon personalizado
 
 ---
 
