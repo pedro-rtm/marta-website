@@ -5,3 +5,4 @@ README.md export-ignore
 package.json export-ignore
 package-lock.json export-ignore
 tools/portfolio-credentials export-ignore
+planning/roadmap.yaml export-ignore

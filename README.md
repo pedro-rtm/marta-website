@@ -125,11 +125,11 @@ Si solo cambias el texto visible pero no los atributos `data-*`, el cambio desap
 
 ## Cómo conectar Calendly
 
-Actualmente el CTA "Reservar primera sesión" apre un email (`mailto:`). Para sustituirlo por Calendly:
+Actualmente la sección de reserva (`<section class="book" id="reserva">`) no usa `mailto:`: tiene un botón "Copiar email" (`#copyEmailBtn`) que copia al portapapeles la dirección `martafernandezgolfin@gmail.com`. La dirección se monta en JavaScript a partir de `data-local="martafernandezgolfin"` y `data-domain="gmail.com"`. Esta guía es opcional; para sustituir ese botón por Calendly:
 
 1. Crea cuenta en Calendly y configura tu evento "Sesión exploratoria 30 min"
-2. En `index.html`, busca: `href="mailto:hola@martafernandezgolfin.com?subject=Sesi%C3%B3n%20exploratoria"`
-3. Reemplázalo por: `href="https://calendly.com/tu-usuario/sesion-exploratoria"`
+2. En `index.html`, busca el botón `<button type="button" id="copyEmailBtn" ...>` y reemplázalo por un enlace: `<a class="book-cta reveal" href="https://calendly.com/tu-usuario/sesion-exploratoria">`
+3. Elimina el bloque de JavaScript "Copy email button" si ya no se usa.
 4. Guarda. Re-sube.
 
 **Para embeber el calendario directamente en la página** (en vez de redirigir):
@@ -147,15 +147,9 @@ Los parámetros `background_color`, `text_color` y `primary_color` hacen que el 
 
 ---
 
-## Email profesional
+## Dirección de contacto
 
-Ahora el sitio apunta a `hola@martafernandezgolfin.com`. Para que ese email funcione:
-
-1. Una vez tengas el dominio en Cloudflare: Email → Email Routing → Enable
-2. Create address: `hola@martafernandezgolfin.com` → redirige a `martafernandezgolfincoach@gmail.com`
-3. Tarda 5 minutos. Gratis.
-
-Mientras no tengas el dominio, puedes dejar `martafernandezgolfincoach@gmail.com` en su lugar — busca todos los sitios donde aparece `hola@martafernandezgolfin.com` en `index.html` y reemplázalos.
+El sitio usa `martafernandezgolfin@gmail.com`, montada a partir de `data-local` y `data-domain` en `#copyEmailBtn` (así no aparece completa en el HTML). Para cambiarla, edita esos dos atributos en `index.html`.
 
 ---
 
